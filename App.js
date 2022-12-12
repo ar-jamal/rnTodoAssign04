@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Button,
   SafeAreaView,
@@ -23,24 +23,27 @@ function App() {
   const [index, setIndex] = useState('');
 
   const addHandler = () => {
-    console.log(index)
-    if (index >= "0") {
+    console.log(index);
+    if (index >= '0') {
       listItems[index] = inputText;
       setListItems([...listItems]);
       // console.log(listItems)
-      setInputText("")
-    } else {
-      listItems.push(inputText)
+      setInputText('');
+      setIndex('');
+    } else if (!!inputText) {
+      listItems.push(inputText);
       setListItems([...listItems]);
-      setInputText("")
-      console.log(listItems)
+      setInputText(null);
+      console.log(listItems);
+    } else {
+      null;
     }
   };
   const delHandler = ind => {
     listItems.splice(ind, 1);
     // setListItems(...listItems.splice(ind, 1));
-    setListItems([...listItems])
-    console.log(listItems)
+    setListItems([...listItems]);
+    console.log(listItems);
   };
   const editHandler = ind => {
     setIndex(ind);
@@ -53,48 +56,41 @@ function App() {
       </View>
       <View style={styles.bodyView}>
         <View style={styles.inputView}>
-          <TouchableOpacity
-            style={styles.inputTag}
-            onPress={addHandler}>
+          <TouchableOpacity style={styles.inputTag} onPress={addHandler}>
             <Text style={styles.AddTodoButton}>+</Text>
           </TouchableOpacity>
           <TextInput
             style={styles.input}
-            onChangeText={(e) => setInputText(e)}
+            onChangeText={e => setInputText(e)}
             value={inputText}
           />
         </View>
         <CusButton
-          title='Submit'
+          title="Submit"
           style={{
             backgroundColor: cusColors.melaWhiteGreen,
             color: cusColors.greenShadeDark,
-            width: "30%"
+            width: '30%',
           }}
-          styleChild={{ color: cusColors.greenShadeDark }}
+          styleChild={{color: cusColors.greenShadeDark}}
           onPress={addHandler}
         />
         {listItems.length > 0
           ? listItems.map((e, i) => (
-            <View style={styles.todoView}
-              key={i}
-            >
-              <TouchableOpacity
-                style={styles.todoViewL}
-                onPress={() => editHandler(i)}
-              >
-                <Text style={styles.todoViewText}>Edit</Text>
-              </TouchableOpacity>
-              <Text /* style={styles.todoViewText} */>{e}</Text>
-              <TouchableOpacity
-                onPress={() => delHandler(i)}
-              >
-                <Text style={styles.todoViewR}>Delete</Text>
-                {/* <Icon/> */}
-              </TouchableOpacity>
-            </View>
-          )) : null
-        }
+              <View style={styles.todoView} key={i}>
+                <TouchableOpacity
+                  style={styles.todoViewL}
+                  onPress={() => editHandler(i)}>
+                  <Text style={styles.todoViewText}>Edit</Text>
+                </TouchableOpacity>
+                <Text /* style={styles.todoViewText} */>{e}</Text>
+                <TouchableOpacity onPress={() => delHandler(i)}>
+                  <Text style={styles.todoViewR}>Delete</Text>
+                  {/* <Icon/> */}
+                </TouchableOpacity>
+              </View>
+            ))
+          : null}
       </View>
     </SafeAreaView>
   );
@@ -106,14 +102,14 @@ const styles = StyleSheet.create({
     height: '100%',
     flex: 1,
     opacity: 0.88,
-    justifyContent: "flex-start",
-    alignItems: "center",
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     backgroundColor: cusColors.melaWhiteMid01,
   },
   headerView: {
-    width: "100%",
-    height: "17%",
-    justifyContent: "center",
+    width: '100%',
+    height: '17%',
+    justifyContent: 'center',
     backgroundColor: cusColors.melaWhiteGreen,
   },
   headerText: {
@@ -128,67 +124,65 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   inputView: {
-    flexDirection: "row",
+    flexDirection: 'row',
     // flexWrap: "wrap",
-    width: "60%",
+    width: '60%',
     height: 40,
     marginTop: 40,
-
   },
   inputTag: {
     flex: 1,
     backgroundColor: cusColors.greenShadeDark,
-    alignItems: "center",
+    alignItems: 'center',
     justifyContent: 'center',
     borderTopLeftRadius: 18,
     borderBottomLeftRadius: 18,
-
   },
   AddTodoButton: {
     fontSize: 18,
-    color: "white",
+    color: 'white',
   },
   input: {
     flex: 4.5,
-    width: "100%",
+    width: '100%',
     padding: 8,
     // aspectRatio: 7,
     borderTopRightRadius: 18,
     borderBottomRightRadius: 18,
-    backgroundColor: cusColors.melaWhiteGreen
+    backgroundColor: cusColors.melaWhiteGreen,
   },
 
   todoView: {
-    flexDirection: "row",
+    flexDirection: 'row',
     // flexWrap: 'wrap',
     width: '80%',
-    height: 35,
+    height: 45,
     justifyContent: 'space-between',
-    alignItems: "center",
+    alignItems: 'center',
     // padding: 5,
     paddingRight: 7,
     borderTopLeftRadius: 18,
     borderBottomLeftRadius: 18,
     marginBottom: 5,
-    backgroundColor: cusColors.melaWhiteGreen
+    backgroundColor: cusColors.melaWhiteGreen,
   },
   todoViewL: {
-    height: "100%",
+    height: '100%',
     justifyContent: 'center',
     paddingHorizontal: 10,
     borderTopLeftRadius: 18,
     borderBottomLeftRadius: 18,
-    backgroundColor: cusColors.greenShadeDark
+    backgroundColor: cusColors.greenShadeDark,
   },
   todoViewText: {
-    color: "white",
+    color: 'white',
     flexWrap: 'wrap',
   },
   todoViewR: {
     paddingLeft: 9,
     borderLeftWidth: 1.5,
-    borderLeftColor: "#263321",
-    color: cusColors.greenShadeDark
+    borderLeftColor: '#263321',
+    color: cusColors.greenShadeDark,
   },
   linkText: {
     width: 80,
