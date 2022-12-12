@@ -10,7 +10,9 @@ const cusColors = {
     offWhiteDarkMore: "#E3E3E1",
     melaWhite: "#DED8CD",
     melaWhiteDark: "#CFCAB5",
-    lightBhiegeColor: "#F5EED5",
+    melaWhiteMid01: "#e0dacc",
+    melaWhiteGreen: "#d1ccc2",
+    lightBhiegeColor: "#d3d0c9",
     lightPale: "#E2D7C6",
     midPale: "#FCEECB",
     darkpale: "#CDC175",
@@ -40,6 +42,8 @@ const cusColors = {
     brownThemeLight: "#AC9377",
     brownThemeMid: "#8D7252",
     brownThemeDark: "#6D5438",
+    greenShade: "#1a7957",
+    greenShadeDark: "#263321"
 
 }
 export default cusColors;
